@@ -2711,7 +2711,7 @@ func (c *Config) ClientSession() (interface{}, error) {
 	satConHttpClient := http.NewHTTPClient(sess.BluemixSession.Config)
 	satConEndpoint := contructEndpoint("config.satellite", fmt.Sprintf("%s/graphql", cloudEndpoint))
 
-	satConClient, err := satcon.New(
+	satConClient, err := satcon.NewWithCustomHTTPClient(
 		envFallBack([]string{"IBMCLOUD_SATELLITE_CONFIG_API_ENDPOINT"}, satConEndpoint),
 		satConHttpClient,
 		authenticator)
